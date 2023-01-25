@@ -3,6 +3,7 @@
 
 # Ignore bundler gems.
 vendor/bundle
+taskleaf/vendor/bundle
 
 # Ignore the default SQLite database.
 /db/*.sqlite3
