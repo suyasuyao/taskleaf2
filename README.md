@@ -69,3 +69,35 @@ git commit -m "rails作成"
 ```
 
 ## Docker 環境構築
+
+以下追加
+docker/db/Dockerfile
+
+docker/web/databese.yml を追加し設定変更
+
+docker/web/Dockerfile
+
+.env 　を追加し、パスを確認
+
+.ruby-version
+
+```shell
+# ビルド時のみ
+docker-compose build --no-cache
+
+# アプリケーション起動時毎回実施
+docker-compose up
+
+# データベースコンテナが存在しないときのみ
+docker-compose exec web bin/rails db:create
+# マイグレーションやデータ投入を行う際に
+docker-compose exec web bin/rails db:migrate db:seed
+
+
+#リセットしたいとき
+docker container prune
+
+#テストしたいとき
+docker-compose  run --rm test bundle exec rspec spec/system/tasks_spec.rb
+
+```
