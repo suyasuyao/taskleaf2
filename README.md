@@ -121,9 +121,43 @@ gem 'html2slim'
 
 `app/assets/stylesheets/application.scss` を作成
 
+
+
+
+## bootstrap4のインストール
+
+以下を設定しインストール
+taskleaf/package.json
 ```
-@import "bootstrap";
+{
+  "name": "taskleaf",
+  "private": true,
+  "dependencies": {
+    "@popperjs/core": "",
+    "bootstrap": "^4.6.0",
+    "jquery": "^3.4.1"
+  }
+}
+
 ```
+
+taskleaf/app/assets/stylesheets/application.scss
+```
+@import "bootstrap/dist/css/bootstrap.min.css";
+
+```
+
+taskleaf/app/app/assets/javascripts/application.js
+```
+//= require rails-ujs
+//= require activestorage
+//= require turbolinks
+//= require jquery/dist/jquery.js
+//= require popper.js/dist/popper.min.js
+//= require_tree .
+//= require bootstrap/dist/js/bootstrap.min.js
+```
+
 
 ## 日本語の設定
 
@@ -135,8 +169,42 @@ curl -s https://raw.githubusercontent.com/svenfuchs/rails-i18n/master/rails/loca
 
 以下を追記
 config/application.rb
+
 ```ruby
+
+# module Taskleafの内部に記載
 
 config.i18n.default_locale = :ja # 追加
 
+```
+
+## タスクモデル追加
+
+```
+docker-compose exec web bin/rails g model Task name:string description:text
+```
+
+```
+docker-compose exec web bin/rails db:migrate
+docker-compose exec web bin/rails c
+
+#確認
+Task.all
+```
+
+## タスクコントローラ
+
+```
+docker-compose exec web bin/rails g controller tasks index show new edit
+
+```
+
+route.rb をいかに変更
+
+```
+Rails.application.routes.draw do
+  root to: 'tasks#index'
+  resource :tasks
+  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+end
 ```

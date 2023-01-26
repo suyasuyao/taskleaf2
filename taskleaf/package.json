@@ -1,5 +1,9 @@
 {
   "name": "taskleaf",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "@popperjs/core": "",
+    "bootstrap": "^4.6.0",
+    "jquery": "^3.4.1"
+  }
 }
