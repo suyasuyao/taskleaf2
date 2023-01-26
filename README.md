@@ -101,3 +101,28 @@ docker container prune
 docker-compose  run --rm test bundle exec rspec spec/system/tasks_spec.rb
 
 ```
+
+
+## slimに変換
+
+
+以下を追加
+```
+gem 'slim-rails'
+gem 'html2slim'
+```
+
+`docker-compose exec web bundle` を実行しインストール
+
+`docker-compose exec web bundle exec erb2slim app/views/layouts/ --delete`　を実行しslimに変換
+
+## scssに変換
+
+
+`docker-compose exec web rm app/assets/stylesheets/application.css`
+
+`app/assets/stylesheets/application.scss` を作成
+
+```
+@import "bootstrap";
+```
