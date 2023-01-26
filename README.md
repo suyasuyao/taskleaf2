@@ -102,11 +102,10 @@ docker-compose  run --rm test bundle exec rspec spec/system/tasks_spec.rb
 
 ```
 
-
-## slimに変換
-
+## slim に変換
 
 以下を追加
+
 ```
 gem 'slim-rails'
 gem 'html2slim'
@@ -114,10 +113,9 @@ gem 'html2slim'
 
 `docker-compose exec web bundle` を実行しインストール
 
-`docker-compose exec web bundle exec erb2slim app/views/layouts/ --delete`　を実行しslimに変換
+`docker-compose exec web bundle exec erb2slim app/views/layouts/ --delete`　を実行し slim に変換
 
-## scssに変換
-
+## scss に変換
 
 `docker-compose exec web rm app/assets/stylesheets/application.css`
 
@@ -125,4 +123,20 @@ gem 'html2slim'
 
 ```
 @import "bootstrap";
+```
+
+## 日本語の設定
+
+config/locales/ja.yml を設定
+
+```shell
+curl -s https://raw.githubusercontent.com/svenfuchs/rails-i18n/master/rails/locale/ja.yml -o taskleaf/config/locales/ja.yml
+```
+
+以下を追記
+config/application.rb
+```ruby
+
+config.i18n.default_locale = :ja # 追加
+
 ```
