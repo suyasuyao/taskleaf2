@@ -204,7 +204,12 @@ route.rb をいかに変更
 ```
 Rails.application.routes.draw do
   root to: 'tasks#index'
-  resource :tasks
+  resources :tasks
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
 ```
+
+resourcesは対象のリソースが複数の形であること前提である。
+基本はこちらがよく使う。
+resourceは対象のリソースが単数の形であること前提である。
+例で言えばユーザー自身のプロフィールのみをモデル化する場合、`resource :profile`となる。
