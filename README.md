@@ -121,13 +121,11 @@ gem 'html2slim'
 
 `app/assets/stylesheets/application.scss` を作成
 
-
-
-
-## bootstrap4のインストール
+## bootstrap4 のインストール
 
 以下を設定しインストール
 taskleaf/package.json
+
 ```
 {
   "name": "taskleaf",
@@ -142,12 +140,14 @@ taskleaf/package.json
 ```
 
 taskleaf/app/assets/stylesheets/application.scss
+
 ```
 @import "bootstrap/dist/css/bootstrap.min.css";
 
 ```
 
 taskleaf/app/app/assets/javascripts/application.js
+
 ```
 //= require rails-ujs
 //= require activestorage
@@ -157,7 +157,6 @@ taskleaf/app/app/assets/javascripts/application.js
 //= require_tree .
 //= require bootstrap/dist/js/bootstrap.min.js
 ```
-
 
 ## 日本語の設定
 
@@ -209,7 +208,7 @@ Rails.application.routes.draw do
 end
 ```
 
-resourcesは対象のリソースが複数の形であること前提である。
+resources は対象のリソースが複数の形であること前提である。
 基本はこちらがよく使う。
-resourceは対象のリソースが単数の形であること前提である。
+resource は対象のリソースが単数の形であること前提である。
 例で言えばユーザー自身のプロフィールのみをモデル化する場合、`resource :profile`となる。
